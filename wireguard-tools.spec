@@ -9,6 +9,7 @@ Source0:	https://git.zx2c4.com/wireguard-tools/snapshot/%{name}-%{version}.tar.x
 URL:		https://www.wireguard.com/
 BuildRequires:	libmnl-devel
 BuildRequires:	rpmbuild(macros) >= 1.701
+Obsoletes:	WireGuard < 1.0.20200319-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -19,8 +20,9 @@ intends to be considerably more performant than OpenVPN. WireGuard is
 designed as a general purpose VPN for running on embedded interfaces
 and super computers alike, fit for many different circumstances.
 
-This package contains user space tools. You need to also install
-kernel module from kernel-*-misc-wireguard package.
+This package contains user space tools. Kernel module is included in
+Linux 5.6+. You need to also install kernel module from
+kernel-*-misc-wireguard package for kernel < 5.6.
 
 %prep
 %setup -q
