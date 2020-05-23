@@ -1,0 +1,11 @@
+--- wireguard-tools-1.0.20200513/src/Makefile~	2020-05-14 02:29:41.000000000 +0200
++++ wireguard-tools-1.0.20200513/src/Makefile	2020-05-23 23:35:01.028509121 +0200
+@@ -37,7 +37,7 @@ endif
+ 
+ PLATFORM ?= $(shell uname -s | tr '[:upper:]' '[:lower:]')
+ 
+-CFLAGS ?= -O3
++CFLAGS += $(OPTFLAGS)
+ ifneq ($(wildcard uapi/$(PLATFORM)/.),)
+ CFLAGS += -idirafter uapi/$(PLATFORM)
+ endif

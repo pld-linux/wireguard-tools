@@ -1,11 +1,12 @@
 Summary:	WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography
 Name:		wireguard-tools
-Version:	1.0.20200319
+Version:	1.0.20200513
 Release:	1
 License:	GPL v2
 Group:		Networking/Daemons
 Source0:	https://git.zx2c4.com/wireguard-tools/snapshot/%{name}-%{version}.tar.xz
-# Source0-md5:	36cd9411f56bc5dcaac29bbab6fd9c67
+# Source0-md5:	b058e5e7eb9f38dbdd553a19c6e5dd22
+Patch0:		opt.patch
 URL:		https://www.wireguard.com/
 BuildRequires:	libmnl-devel
 BuildRequires:	rpmbuild(macros) >= 1.701
@@ -26,9 +27,14 @@ kernel-*-misc-wireguard package for kernel < 5.6.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%{make} -C src V=1
+%{make} -C src \
+	CC="%{__cc}" \
+	OPTFLAGS="%{rpmcflags} %{rpmcppflags}" \
+	RUNSTATEDIR=%{_varrun} \
+	V=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -37,6 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	SYSCONFDIR=$RPM_BUILD_ROOT%{_sysconfdir} \
 	SYSTEMDUNITDIR=$RPM_BUILD_ROOT%{systemdunitdir} \
+	WITH_BASHCOMPLETION=yes \
 	WITH_SYSTEMDUNITS=yes
 
 %clean
@@ -52,5 +59,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/wg-quick
 %dir %{_sysconfdir}/wireguard
 %{systemdunitdir}/wg-quick@.service
+%{systemdunitdir}/wg-quick.target
 %{_mandir}/man8/wg-quick.8*
 %{_mandir}/man8/wg.8*
