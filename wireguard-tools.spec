@@ -8,7 +8,6 @@ Source0:	https://git.zx2c4.com/wireguard-tools/snapshot/%{name}-%{version}.tar.x
 # Source0-md5:	b058e5e7eb9f38dbdd553a19c6e5dd22
 Patch0:		opt.patch
 URL:		https://www.wireguard.com/
-BuildRequires:	libmnl-devel
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.701
 BuildRequires:	tar >= 1:1.22
