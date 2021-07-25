@@ -50,9 +50,13 @@ CFLAGS="%{rpmcflags} %{rpmcppflags}" \
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C src install \
-	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
-	SYSCONFDIR=$RPM_BUILD_ROOT%{_sysconfdir} \
-	SYSTEMDUNITDIR=$RPM_BUILD_ROOT%{systemdunitdir} \
+	DESTDIR=$RPM_BUILD_ROOT \
+	PREFIX=%{_prefix} \
+	BINDIR=%{_bindir} \
+	MANDIR=%{_mandir} \
+	SYSCONFDIR=%{_sysconfdir} \
+	SYSTEMDUNITDIR=%{systemdunitdir} \
+	BASHCOMPDIR=%{bash_compdir} \
 	WITH_BASHCOMPLETION=yes \
 	WITH_SYSTEMDUNITS=yes
 
