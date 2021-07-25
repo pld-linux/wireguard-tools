@@ -6,7 +6,6 @@ License:	GPL v2
 Group:		Networking/Daemons
 Source0:	https://git.zx2c4.com/wireguard-tools/snapshot/%{name}-%{version}.tar.xz
 # Source0-md5:	b058e5e7eb9f38dbdd553a19c6e5dd22
-Patch0:		opt.patch
 URL:		https://www.wireguard.com/
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.701
@@ -39,12 +38,11 @@ This package provides bash-completion for WireGuard.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
+CFLAGS="%{rpmcflags} %{rpmcppflags}" \
 %{__make} -C src \
 	CC="%{__cc}" \
-	OPTFLAGS="%{rpmcflags} %{rpmcppflags}" \
 	RUNSTATEDIR=%{_rundir} \
 	V=1
 
