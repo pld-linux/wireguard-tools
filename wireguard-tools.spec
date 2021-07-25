@@ -35,7 +35,7 @@ kernel-*-misc-wireguard package for kernel < 5.6.
 %{__make} -C src \
 	CC="%{__cc}" \
 	OPTFLAGS="%{rpmcflags} %{rpmcppflags}" \
-	RUNSTATEDIR=%{_varrun} \
+	RUNSTATEDIR=%{_rundir} \
 	V=1
 
 %install
