@@ -30,7 +30,7 @@ kernel-*-misc-wireguard package for kernel < 5.6.
 %patch0 -p1
 
 %build
-%{make} -C src \
+%{__make} -C src \
 	CC="%{__cc}" \
 	OPTFLAGS="%{rpmcflags} %{rpmcppflags}" \
 	RUNSTATEDIR=%{_varrun} \
@@ -39,7 +39,7 @@ kernel-*-misc-wireguard package for kernel < 5.6.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{make} -C src install \
+%{__make} -C src install \
 	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	SYSCONFDIR=$RPM_BUILD_ROOT%{_sysconfdir} \
 	SYSTEMDUNITDIR=$RPM_BUILD_ROOT%{systemdunitdir} \
