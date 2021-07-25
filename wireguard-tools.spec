@@ -1,11 +1,11 @@
 Summary:	WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography
 Name:		wireguard-tools
-Version:	1.0.20200513
+Version:	1.0.20210424
 Release:	1
 License:	GPL v2
 Group:		Networking/Daemons
 Source0:	https://git.zx2c4.com/wireguard-tools/snapshot/%{name}-%{version}.tar.xz
-# Source0-md5:	b058e5e7eb9f38dbdd553a19c6e5dd22
+# Source0-md5:	53a0f06dbb298bbae7532fd10bcc3af1
 URL:		https://www.wireguard.com/
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.701
