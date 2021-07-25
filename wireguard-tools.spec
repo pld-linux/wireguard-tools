@@ -10,6 +10,8 @@ Patch0:		opt.patch
 URL:		https://www.wireguard.com/
 BuildRequires:	libmnl-devel
 BuildRequires:	rpmbuild(macros) >= 1.701
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Obsoletes:	WireGuard < 1.0.20200319-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
