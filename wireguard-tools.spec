@@ -58,7 +58,8 @@ rm -rf $RPM_BUILD_ROOT
 	SYSTEMDUNITDIR=%{systemdunitdir} \
 	BASHCOMPDIR=%{bash_compdir} \
 	WITH_BASHCOMPLETION=yes \
-	WITH_SYSTEMDUNITS=yes
+	WITH_SYSTEMDUNITS=yes \
+	WITH_WGQUICK=yes
 
 %clean
 rm -rf $RPM_BUILD_ROOT
