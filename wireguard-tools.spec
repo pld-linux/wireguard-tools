@@ -9,6 +9,7 @@ Source0:	https://git.zx2c4.com/wireguard-tools/snapshot/%{name}-%{version}.tar.x
 Patch0:		opt.patch
 URL:		https://www.wireguard.com/
 BuildRequires:	libmnl-devel
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.701
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -26,6 +27,16 @@ and super computers alike, fit for many different circumstances.
 This package contains user space tools. Kernel module is included in
 Linux 5.6+. You need to also install kernel module from
 kernel-*-misc-wireguard package for kernel < 5.6.
+
+%package -n bash-completion-wireguard
+Summary:	bash-completion for WireGuard
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	bash-completion >= 2.0
+BuildArch:	noarch
+
+%description -n bash-completion-wireguard
+This package provides bash-completion for WireGuard.
 
 %prep
 %setup -q
@@ -64,3 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 %{systemdunitdir}/wg-quick.target
 %{_mandir}/man8/wg-quick.8*
 %{_mandir}/man8/wg.8*
+
+%files -n bash-completion-wireguard
+%defattr(644,root,root,755)
+%{bash_compdir}/wg
+%{bash_compdir}/wg-quick
